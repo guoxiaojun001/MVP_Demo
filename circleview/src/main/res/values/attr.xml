@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleView">
+
+        <attr name="firstColor" format="color" />
+        <attr name="secondColor" format="color" />
+        <attr name="circleWidth" format="dimension" />
+
+        <attr name="centerTextColor" format="color" />
+        <attr name="centerTextSize" format="dimension" />
+        <attr name="centerTextContent" format="string" />
+
+        <attr name="bottomTextColor" format="color" />
+        <attr name="bottomTextSize" format="dimension" />
+        <attr name="bottomTextContent" format="string" />
+        <attr name="speed" format="integer" />
+
+    </declare-styleable>
+
+</resources>
