@@ -1,1 +1,1 @@
-include ':app', ':circleview'
+include ':app', ':circleview', ':mycustomscrollview'
