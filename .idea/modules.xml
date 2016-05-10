@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/MVP_Demo.iml" filepath="$PROJECT_DIR$/MVP_Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/circleview/circleview.iml" filepath="$PROJECT_DIR$/circleview/circleview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iocInject/iocInject.iml" filepath="$PROJECT_DIR$/iocInject/iocInject.iml" />
       <module fileurl="file://$PROJECT_DIR$/mycustomscrollview/mycustomscrollview.iml" filepath="$PROJECT_DIR$/mycustomscrollview/mycustomscrollview.iml" />
     </modules>
   </component>
