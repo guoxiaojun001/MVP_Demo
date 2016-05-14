@@ -22,6 +22,7 @@
 
         gxj:bottomTextColor="@android:color/background_dark"
         gxj:bottomTextSize="15sp"
+        gxj:bottomTextContent="xiaobai"
 
         gxj:centerTextColor="@android:color/holo_red_dark"
         gxj:centerTextSize="15sp"
@@ -42,11 +43,12 @@
 
         gxj:bottomTextColor="@android:color/background_dark"
         gxj:bottomTextSize="20sp"
+        gxj:bottomTextContent="xiaobai"
 
         gxj:centerTextColor="@android:color/holo_green_dark"
         gxj:centerTextSize="30sp"
         gxj:centerTextContent="xiaobai"
 
-        gxj:speed="20"
+        gxj:speed="10"
         />
 </RelativeLayout>

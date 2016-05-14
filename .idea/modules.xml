@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/circleview/circleview.iml" filepath="$PROJECT_DIR$/circleview/circleview.iml" />
       <module fileurl="file://$PROJECT_DIR$/iocInject/iocInject.iml" filepath="$PROJECT_DIR$/iocInject/iocInject.iml" />
       <module fileurl="file://$PROJECT_DIR$/mycustomscrollview/mycustomscrollview.iml" filepath="$PROJECT_DIR$/mycustomscrollview/mycustomscrollview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/objectanimator/objectanimator.iml" filepath="$PROJECT_DIR$/objectanimator/objectanimator.iml" />
     </modules>
   </component>
 </project>

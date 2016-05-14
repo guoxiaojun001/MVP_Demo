@@ -8,8 +8,11 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by gxj on 2016/5/5.
@@ -35,89 +38,64 @@ public class CircleView extends View{
 
     protected Paint textPaint;
 
-    public String getCenterTextContent() {
-        return centerTextContent;
-    }
+    int x,y;
+    Context context;
+
+    MyListener myListener;
+
 
     public void setCenterTextContent(String centerTextContent) {
         this.centerTextContent = centerTextContent;
         invalidate();
     }
 
-    public String getBottomTextContent() {
-        return bottomTextContent;
-    }
 
     public void setBottomTextContent(String bottomTextContent) {
         this.bottomTextContent = bottomTextContent;
         invalidate();
     }
 
-    public int getmFirstColor() {
-        return mFirstColor;
-    }
 
     public void setmFirstColor(int mFirstColor) {
         this.mFirstColor = mFirstColor;
         invalidate();
     }
 
-    public int getmSecondColor() {
-        return mSecondColor;
-    }
 
     public void setmSecondColor(int mSecondColor) {
         this.mSecondColor = mSecondColor;
         invalidate();
     }
 
-    public int getmCircleWidth() {
-        return mCircleWidth;
-    }
 
     public void setmCircleWidth(int mCircleWidth) {
         this.mCircleWidth = mCircleWidth;
         invalidate();
     }
 
-    public int getCenterTextColor() {
-        return centerTextColor;
-    }
 
     public void setCenterTextColor(int centerTextColor) {
         this.centerTextColor = centerTextColor;
         invalidate();
     }
 
-    public float getCenterTextSize() {
-        return centerTextSize;
-    }
 
     public void setCenterTextSize(float centerTextSize) {
         this.centerTextSize = centerTextSize;
     }
 
-    public int getBottomTextColor() {
-        return bottomTextColor;
-    }
 
     public void setBottomTextColor(int bottomTextColor) {
         this.bottomTextColor = bottomTextColor;
         invalidate();
     }
 
-    public float getBottomTextSize() {
-        return bottomTextSize;
-    }
 
     public void setBottomTextSize(float bottomTextSize) {
         this.bottomTextSize = bottomTextSize;
         invalidate();
     }
 
-    public int getmProgress() {
-        return mProgress;
-    }
 
     public void setmProgress(int mProgress) {
         this.mProgress = mProgress;
@@ -132,21 +110,7 @@ public class CircleView extends View{
         this.mSpeed = mSpeed;
     }
 
-    public Paint getmPaint() {
-        return mPaint;
-    }
 
-    public void setmPaint(Paint mPaint) {
-        this.mPaint = mPaint;
-    }
-
-    public Paint getTextPaint() {
-        return textPaint;
-    }
-
-    public void setTextPaint(Paint textPaint) {
-        this.textPaint = textPaint;
-    }
 
     public CircleView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -159,6 +123,7 @@ public class CircleView extends View{
     public CircleView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
+        this.context = context;
         //TypedArray typedArray0 = context.getTheme().obtainStyledAttributes(attrs,R.styleable.CircleView,defStyle,0);
         TypedArray typedArray = context.obtainStyledAttributes
                 (attrs,R.styleable.CircleView,defStyle,0);
@@ -260,16 +225,23 @@ public class CircleView extends View{
             canvas.drawArc(oval, 120, mProgress , false, mPaint); // 根据进度画圆弧
 
             canvas.drawText(
-                    centerTextContent,
+                    bottomTextContent,
                     centre,
                     centre*2 - DensityUtil.dp2px(getResources(),5), textPaint);
 
             textPaint.setColor(centerTextColor);
             textPaint.setTextSize(centerTextSize);
+
+            //centerTextContent = mProgress/3 + "%";
+            if(mProgress/3 >= 100){
+            }else{
+                centerTextContent = mProgress/3 + "%";
+            }
             canvas.drawText(
-                    mProgress/3 + "%",
+                    centerTextContent,
                     centre,
                     centre, textPaint);
+
 //        } else {
 //            mPaint.setColor(mSecondColor); // 设置圆环的颜色
 //            canvas.drawCircle(centre, centre, radius, mPaint); // 画出圆环
@@ -285,4 +257,30 @@ public class CircleView extends View{
                             int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float x = event.getX();
+        float y = event.getY();
+        float rx = event.getRawX();
+        float ry = event.getRawY();
+
+        if (rx > this.getLeft() + 100 && rx < this.getRight() - 100
+                && ry > this.getTop() + 100 && ry < this.getBottom() - 100){
+            myListener.start();
+
+            return false;
+        }
+
+        return super.onTouchEvent(event);
+    }
+
+    public void setListener(MyListener myListener){
+            this.myListener = myListener;
+    }
+
+    public interface MyListener {
+        void start();
+    }
+
 }

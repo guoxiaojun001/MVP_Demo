@@ -1,1 +1,1 @@
-include ':app', ':circleview', ':mycustomscrollview', ':iocInject'
+include ':app', ':circleview', ':mycustomscrollview', ':iocInject', ':objectanimator'

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/circleview" />
             <option value="$PROJECT_DIR$/iocInject" />
             <option value="$PROJECT_DIR$/mycustomscrollview" />
+            <option value="$PROJECT_DIR$/objectanimator" />
           </set>
         </option>
         <option name="myModules">
@@ -21,6 +22,7 @@
             <option value="$PROJECT_DIR$/circleview" />
             <option value="$PROJECT_DIR$/iocInject" />
             <option value="$PROJECT_DIR$/mycustomscrollview" />
+            <option value="$PROJECT_DIR$/objectanimator" />
           </set>
         </option>
       </GradleProjectSettings>
