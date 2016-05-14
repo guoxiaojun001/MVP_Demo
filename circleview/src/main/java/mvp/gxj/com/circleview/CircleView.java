@@ -267,7 +267,9 @@ public class CircleView extends View{
 
         if (rx > this.getLeft() + 100 && rx < this.getRight() - 100
                 && ry > this.getTop() + 100 && ry < this.getBottom() - 100){
-            myListener.start();
+            if(null != myListener){
+                myListener.start();
+            }
 
             return false;
         }
