@@ -1,4 +1,4 @@
-package mvp.gxj.com.myapplication;
+package mvp.gxj.com.inject;
 
 import android.app.Activity;
 import android.util.Log;

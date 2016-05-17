@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/iocInject" />
             <option value="$PROJECT_DIR$/mycustomscrollview" />
             <option value="$PROJECT_DIR$/objectanimator" />
+            <option value="$PROJECT_DIR$/viewpager_animaltor" />
           </set>
         </option>
         <option name="myModules">
@@ -23,6 +24,7 @@
             <option value="$PROJECT_DIR$/iocInject" />
             <option value="$PROJECT_DIR$/mycustomscrollview" />
             <option value="$PROJECT_DIR$/objectanimator" />
+            <option value="$PROJECT_DIR$/viewpager_animaltor" />
           </set>
         </option>
       </GradleProjectSettings>

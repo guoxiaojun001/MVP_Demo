@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/iocInject/iocInject.iml" filepath="$PROJECT_DIR$/iocInject/iocInject.iml" />
       <module fileurl="file://$PROJECT_DIR$/mycustomscrollview/mycustomscrollview.iml" filepath="$PROJECT_DIR$/mycustomscrollview/mycustomscrollview.iml" />
       <module fileurl="file://$PROJECT_DIR$/objectanimator/objectanimator.iml" filepath="$PROJECT_DIR$/objectanimator/objectanimator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewpager_animaltor/viewpager_animaltor.iml" filepath="$PROJECT_DIR$/viewpager_animaltor/viewpager_animaltor.iml" />
     </modules>
   </component>
 </project>

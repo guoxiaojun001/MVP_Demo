@@ -1,4 +1,4 @@
-package mvp.gxj.com.myapplication;
+package mvp.gxj.com.inject;
 
 /**
  * Created by gxj on 2016/5/10.
