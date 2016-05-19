@@ -22,6 +22,8 @@ public class DataMonitorActivity extends Activity {
     private TextView power;
     private int max = 1024;
     private int min = 102;
+    int auto = 0;
+
 
     private Handler handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -29,6 +31,14 @@ public class DataMonitorActivity extends Activity {
                 int num = msg.getData().getInt("progress");
                 Log.i("num", num + "");
                 power.setText((float) num / 100 * max + "M/" + max + "M");
+            }else if (msg.what == 0){
+                handler.removeMessages(0);
+                ++auto;
+                if(auto <= 100){
+                    mWaterWaveView.setmWaterLevel((float) auto / 100);
+                    power.setText(auto + "%" );
+                    handler.sendEmptyMessageDelayed(0,100);
+                }
             }
         }
     };
@@ -40,6 +50,8 @@ public class DataMonitorActivity extends Activity {
 
         power = (TextView) findViewById(R.id.power);
         power.setText(min + "M/" + max + "M");
+
+        handler.sendEmptyMessageDelayed(0,1000);//自动增加
 
         mWaterWaveView = (WaterWaveView) findViewById(R.id.wave_view);
         // 设置多高，float，0.1-1F
