@@ -19,15 +19,12 @@
         gxj:circleWidth="15dp"
         gxj:firstColor="@android:color/holo_blue_bright"
         gxj:secondColor="@android:color/black"
-
         gxj:bottomTextColor="@android:color/background_dark"
         gxj:bottomTextSize="15sp"
         gxj:bottomTextContent="xiaobai"
-
         gxj:centerTextColor="@android:color/holo_red_dark"
         gxj:centerTextSize="15sp"
         gxj:centerTextContent="nba"
-
         gxj:speed="20"
         />
 
@@ -40,15 +37,20 @@
         android:layout_centerInParent="true"
         gxj:firstColor="@android:color/transparent"
         gxj:secondColor="@android:color/holo_blue_light"
-
         gxj:bottomTextColor="@android:color/background_dark"
         gxj:bottomTextSize="20sp"
         gxj:bottomTextContent="xiaobai"
-
         gxj:centerTextColor="@android:color/holo_green_dark"
         gxj:centerTextSize="30sp"
         gxj:centerTextContent="xiaobai"
-
         gxj:speed="10"
         />
+
+
+    <Button
+        android:id="@+id/go_second"
+        android:layout_below="@id/circle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转到第二页"/>
 </RelativeLayout>

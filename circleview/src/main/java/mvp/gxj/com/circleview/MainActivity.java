@@ -1,11 +1,14 @@
 package mvp.gxj.com.circleview;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity implements CircleView.MyListener{
     private CircleView circleView1;
@@ -17,6 +20,8 @@ public class MainActivity extends Activity implements CircleView.MyListener{
     private int delay01;
     private int delay02;
 
+    private Button btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,14 @@ public class MainActivity extends Activity implements CircleView.MyListener{
 
         circleView1 = (CircleView) this.findViewById(R.id.circle1);
         circleView2 = (CircleView) findViewById(R.id.circle2);
+
+        btn = (Button) findViewById(R.id.go_second);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,DataMonitorActivity.class));
+            }
+        });
 
         circleView1.setBottomTextContent("nba");
         circleView2.setBottomTextContent("小白");
