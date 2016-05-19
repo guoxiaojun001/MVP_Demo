@@ -11,4 +11,5 @@ http://mp.weixin.qq.com/s?__biz=MzA3ODg4MDk0Ng==&mid=403539764&idx=1&sn=d30d89e6
 
 
 
-<img src="./pic/qq.png">
+<img src="./preview/001.png">
+<img src="./preview/002.png">
