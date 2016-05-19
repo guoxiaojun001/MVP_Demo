@@ -11,4 +11,4 @@ http://mp.weixin.qq.com/s?__biz=MzA3ODg4MDk0Ng==&mid=403539764&idx=1&sn=d30d89e6
 
 
 
-![image](https://github.com/guoxiaojun001/MVP_Demo/pic/qq.png)
+<img src="./pic/qq.png">
