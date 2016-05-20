@@ -34,10 +34,12 @@ public class DataMonitorActivity extends Activity {
             }else if (msg.what == 0){
                 handler.removeMessages(0);
                 ++auto;
-                if(auto <= 100){
-                    mWaterWaveView.setmWaterLevel((float) auto / 100);
-                    power.setText(auto + "%" );
-                    handler.sendEmptyMessageDelayed(0,100);
+                if(null != mWaterWaveView){
+                    if(auto <= 100){
+                        mWaterWaveView.setmWaterLevel((float) auto / 100);
+                        power.setText(auto + "%" );
+                        handler.sendEmptyMessageDelayed(0,100);
+                    }
                 }
             }
         }
