@@ -16,9 +16,11 @@ import android.widget.ProgressBar;
 
 /**
  * @category View必须是正方形
+ *
+ * 可以自定义大小，可以选择是否有波浪
  * 
  */
-public class WaterWaveView extends View {
+public class CustomWaterWaveView extends View {
 
 	private Context mContext;
 
@@ -32,7 +34,7 @@ public class WaterWaveView extends View {
 	private Paint flowPaint;
 	private Paint leftPaint;
 
-	private int mRingSTROKEWidth = (int) DensityUtil.dp2px(getResources(),10);
+	private int mRingSTROKEWidth = (int) DensityUtil.dp2px(getResources(),10);;
 	private int mCircleSTROKEWidth = 2;
 	private int mLineSTROKEWidth = 1;
 
@@ -56,7 +58,7 @@ public class WaterWaveView extends View {
 	/**
 	 * @param context
 	 */
-	public WaterWaveView(Context context) {
+	public CustomWaterWaveView(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		mContext = context;
@@ -67,7 +69,7 @@ public class WaterWaveView extends View {
 	 * @param context
 	 * @param attrs
 	 */
-	public WaterWaveView(Context context, AttributeSet attrs) {
+	public CustomWaterWaveView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		mContext = context;
@@ -79,7 +81,7 @@ public class WaterWaveView extends View {
 	 * @param attrs
 	 * @param defStyleAttr
 	 */
-	public WaterWaveView(Context context, AttributeSet attrs, int defStyleAttr) {
+	public CustomWaterWaveView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		// TODO Auto-generated constructor stub
 		mContext = context;
@@ -138,24 +140,13 @@ public class WaterWaveView extends View {
 					invalidate();
 					if (mStarted) {
 						// 不断发消息给自己，使自己不断被重绘
-						mHandler.sendEmptyMessageDelayed(0, 60L);
+						mHandler.sendEmptyMessageDelayed(0, 50L);
 					}
 				}
 			}
 		};
 	}
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		int width = measure(widthMeasureSpec, true);
-		int height = measure(heightMeasureSpec, false);
-		if (width < height) {
-			setMeasuredDimension(width, width);
-		} else {
-			setMeasuredDimension(height, height);
-		}
-
-	}
 
 	/**
 	 * @category 测量
@@ -186,20 +177,17 @@ public class WaterWaveView extends View {
 		return result;
 	}
 
-	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		// TODO Auto-generated method stub
-		super.onSizeChanged(w, h, oldw, oldh);
-		mScreenWidth = w;
-		mScreenHeight = h;
-	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
-		Log.d("AAAA",">>>>>>WaterWaveView>>>>onDraw>>>");
+		Log.d("AAAA",">>>>>>CustomWaterWaveView>>>>onDraw>>>");
 		// 得到控件的宽高
+
+		mScreenWidth = getWidth();
+		mScreenHeight = getHeight();
+
 		int width = getWidth();
 		int height = getHeight();
 		setBackgroundColor(mContext.getResources().getColor(R.color.main_bg));
@@ -218,8 +206,8 @@ public class WaterWaveView extends View {
 			sweepAngle = 180F - 2 * horiAngle;
 		}
 
-		canvas.drawLine(mScreenWidth * 3 / 8, mScreenHeight * 5 / 8,
-				mScreenWidth * 5 / 8, mScreenHeight * 5 / 8, linePaint);
+//		canvas.drawLine(mScreenWidth * 3 / 8, mScreenHeight * 5 / 8,
+//				mScreenWidth * 5 / 8, mScreenHeight * 5 / 8, linePaint);
 		
 		float num = flowPaint.measureText(flowNum);
 		canvas.drawText(flowNum, mScreenWidth * 4 / 8 - num / 2,
@@ -238,8 +226,8 @@ public class WaterWaveView extends View {
 		}
 		// 绘制,即水面静止时的高度
 		// 绘制,即水面静止时的高度
-		RectF oval = new RectF(mScreenWidth / 4, mScreenHeight / 4,
-				mScreenWidth * 3 / 4, mScreenHeight * 3 / 4);
+		RectF oval = new RectF(mRingSTROKEWidth / 2, mRingSTROKEWidth / 2,
+				mScreenWidth - mRingSTROKEWidth / 2, mScreenHeight - mRingSTROKEWidth / 2);
 		canvas.drawArc(oval, startAngle, sweepAngle, false, mWavePaint);
 
 		if (this.c >= 8388607L) {
@@ -267,19 +255,19 @@ public class WaterWaveView extends View {
 			endX = (int) (mScreenWidth / 2 + mScreenWidth / 4 - offsetWidth + mAmplitude);
 		}
 		// 波浪效果
-		while (startX < endX) {
-			int startY = (int) (f1 - mAmplitude
-					* Math.sin(Math.PI
-							* (2.0F * (startX + this.c * width * this.f))
-							/ width));
-			canvas.drawLine(startX, startY, startX, top, mWavePaint);
-			startX++;
-		}
-		canvas.drawCircle(mScreenWidth / 2, mScreenHeight / 2, mScreenWidth / 4
-				+ mRingSTROKEWidth / 2, mRingPaint);
+//		while (startX < endX) {
+//			int startY = (int) (f1 - mAmplitude
+//					* Math.sin(Math.PI
+//							* (2.0F * (startX + this.c * width * this.f))
+//							/ width));
+//			canvas.drawLine(startX, startY, startX, top, mWavePaint);
+//			startX++;
+//		}
+		canvas.drawCircle(mScreenWidth / 2, mScreenHeight / 2, mScreenWidth / 2
+				- mRingSTROKEWidth / 2, mRingPaint);
 
 		canvas.drawCircle(mScreenWidth / 2, mScreenHeight / 2,
-				mScreenWidth / 4, mCirclePaint);
+				mScreenWidth / 2, mCirclePaint);
 		canvas.restore();
 	}
 
@@ -302,7 +290,7 @@ public class WaterWaveView extends View {
 	@Override
 	protected void onAttachedToWindow() {
 		super.onAttachedToWindow();
-		// 关闭硬件加速，防止异常unsupported operation exception
+		// 关闭硬件加速，部分手机 会出现异常 防止异常unsupported operation exception
 		this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 	}
 

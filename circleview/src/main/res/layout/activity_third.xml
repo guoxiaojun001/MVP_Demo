@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <mvp.gxj.com.circleview.WaterWaveView
-        android:id="@+id/wave_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <mvp.gxj.com.circleview.CustomWaterWaveView
+        android:id="@+id/customwave_view"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerInParent="true" />
+
 
     <TextView
         android:id="@+id/power"

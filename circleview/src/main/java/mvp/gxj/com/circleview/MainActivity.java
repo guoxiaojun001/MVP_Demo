@@ -20,7 +20,7 @@ public class MainActivity extends Activity implements CircleView.MyListener{
     private int delay01;
     private int delay02;
 
-    private Button btn;
+    private Button btn,go_third;
 
 
     @Override
@@ -36,6 +36,14 @@ public class MainActivity extends Activity implements CircleView.MyListener{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,DataMonitorActivity.class));
+            }
+        });
+
+        go_third  = (Button) findViewById(R.id.go_third);
+        go_third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ThirdActivity.class));
             }
         });
 
