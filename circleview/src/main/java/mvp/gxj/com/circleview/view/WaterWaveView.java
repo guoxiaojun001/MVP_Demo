@@ -135,13 +135,13 @@ public class WaterWaveView extends View {
 			@Override
 			public void handleMessage(android.os.Message msg) {
 				if (msg.what == 0) {
-					if(mWaterLevel >= 1){//如果达到百分百，则停止绘画，提高效率
+					if(mWaterLevel > 1){//如果达到百分百，则停止绘画，提高效率
 						return;
 					}
 					invalidate();
 					if (mStarted) {
 						// 不断发消息给自己，使自己不断被重绘
-						mHandler.sendEmptyMessageDelayed(0, 60L);
+						mHandler.sendEmptyMessageDelayed(0, 10L);
 					}
 				}
 			}

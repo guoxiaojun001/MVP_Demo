@@ -33,11 +33,14 @@ public class ThirdActivity extends Activity{
                 handler.removeMessages(0);
                 ++auto;
                 if(null != mWaterWaveView){
-                    if(auto <= 100){
-                        mWaterWaveView.setmWaterLevel((float) auto / 100);
-                        power.setText(auto + "%" );
-                        handler.sendEmptyMessageDelayed(0,20);
+                    if(auto >= 100){
+                        mWaterWaveView.setmWaterLevel(1);
+                        power.setText("100%" );
+                        return;
                     }
+                    mWaterWaveView.setmWaterLevel((float) auto / 100);
+                    power.setText(auto + "%" );
+                    handler.sendEmptyMessageDelayed(0,20);
                 }
             }
         }

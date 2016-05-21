@@ -67,8 +67,8 @@
     <Button
         android:id="@+id/go_other"
         android:layout_marginLeft="10dp"
-        android:layout_below="@id/circle2"
-        android:layout_toRightOf="@id/go_third"
+        android:layout_below="@id/go_third"
+        android:layout_toRightOf="@id/go_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="加载网络图片"/>

@@ -143,7 +143,7 @@ public class CustomWaterWaveView extends View {
 					invalidate();
 					if (mStarted) {
 						// 不断发消息给自己，使自己不断被重绘
-						mHandler.sendEmptyMessageDelayed(0, 50L);
+						mHandler.sendEmptyMessageDelayed(0, 10L);
 					}
 				}
 			}
