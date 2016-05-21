@@ -1,4 +1,4 @@
-package mvp.gxj.com.circleview;
+package mvp.gxj.com.circleview.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,11 +8,12 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+
+import mvp.gxj.com.circleview.DensityUtil;
+import mvp.gxj.com.circleview.R;
 
 /**
  * Created by gxj on 2016/5/5.

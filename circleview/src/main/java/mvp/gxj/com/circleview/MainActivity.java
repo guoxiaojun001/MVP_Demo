@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import mvp.gxj.com.circleview.view.CircleView;
+
 public class MainActivity extends Activity implements CircleView.MyListener{
     private CircleView circleView1;
     private CircleView circleView2;
@@ -20,7 +22,7 @@ public class MainActivity extends Activity implements CircleView.MyListener{
     private int delay01;
     private int delay02;
 
-    private Button btn,go_third;
+    private Button btn,go_third,go_other;
 
 
     @Override
@@ -44,6 +46,14 @@ public class MainActivity extends Activity implements CircleView.MyListener{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,ThirdActivity.class));
+            }
+        });
+
+        go_other = (Button) findViewById(R.id.go_other);
+        go_other.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,LoadImageToCircleActivity.class));
             }
         });
 

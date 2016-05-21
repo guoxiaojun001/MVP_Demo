@@ -9,6 +9,8 @@ import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import mvp.gxj.com.circleview.view.WaterWaveView;
+
 /**
  * 类似流量监控
  *

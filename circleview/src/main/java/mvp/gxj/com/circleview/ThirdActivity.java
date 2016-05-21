@@ -8,6 +8,8 @@ import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import mvp.gxj.com.circleview.view.CustomWaterWaveView;
+
 /**
  * Created by gxj on 2016/5/20.
  */

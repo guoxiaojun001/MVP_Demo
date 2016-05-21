@@ -6,7 +6,11 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="23" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".MyApplication"
         android:hardwareAccelerated="false"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +28,8 @@
         <activity android:name=".DataMonitorActivity" />
 
         <activity android:name=".ThirdActivity" />
+
+        <activity android:name=".LoadImageToCircleActivity" />
 
     </application>
 

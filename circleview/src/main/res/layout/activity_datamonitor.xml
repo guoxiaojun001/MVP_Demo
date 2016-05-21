@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
 
-    <mvp.gxj.com.circleview.WaterWaveView
+    <mvp.gxj.com.circleview.view.WaterWaveView
         android:id="@+id/wave_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

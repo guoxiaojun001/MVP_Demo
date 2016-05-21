@@ -1,4 +1,4 @@
-package mvp.gxj.com.circleview;
+package mvp.gxj.com.circleview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,6 +13,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import mvp.gxj.com.circleview.DensityUtil;
+import mvp.gxj.com.circleview.R;
 
 /**
  * @category View必须是正方形
