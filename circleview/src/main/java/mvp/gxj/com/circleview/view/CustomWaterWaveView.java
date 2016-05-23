@@ -1,11 +1,14 @@
 package mvp.gxj.com.circleview.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -57,6 +60,38 @@ public class CustomWaterWaveView extends View {
 	//绘制文字显示在圆形中间，只是我没有设置，我觉得写在布局上也挺好的
 	private String flowNum = "";
 	private String flowLeft = "还剩余";
+
+
+
+	//************************
+	private float mDefaultAmplitude;
+	private float mDefaultWaterLevel;
+	private float mDefaultWaveLength;
+	private double mDefaultAngularFrequency;
+
+	private float mAmplitudeRatio = DEFAULT_AMPLITUDE_RATIO;
+	private float mWaveLengthRatio = DEFAULT_WAVE_LENGTH_RATIO;
+	private float mWaterLevelRatio = DEFAULT_WATER_LEVEL_RATIO;
+	private float mWaveShiftRatio = DEFAULT_WAVE_SHIFT_RATIO;
+
+	private int mBehindWaveColor = DEFAULT_BEHIND_WAVE_COLOR;
+	private int mFrontWaveColor = DEFAULT_FRONT_WAVE_COLOR;
+
+	private static final float DEFAULT_AMPLITUDE_RATIO = 0.05f;
+	private static final float DEFAULT_WAVE_LENGTH_RATIO = 1.0f;
+	private static final float DEFAULT_WATER_LEVEL_RATIO = 0.5f;
+	private static final float DEFAULT_WAVE_SHIFT_RATIO = 0.0f;
+
+	public static final int DEFAULT_BEHIND_WAVE_COLOR = Color.parseColor("#28FFFFFF");
+	public static final int DEFAULT_FRONT_WAVE_COLOR = Color.parseColor("#3CFFFFFF");
+	public static final ShapeType DEFAULT_WAVE_SHAPE = ShapeType.CIRCLE;
+	public enum ShapeType {
+		CIRCLE,
+		SQUARE
+	}
+
+	private BitmapShader mWaveShader;
+	//************************
 
 	/**
 	 * @param context
@@ -182,6 +217,53 @@ public class CustomWaterWaveView extends View {
 
 
 	@Override
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+		super.onSizeChanged(w, h, oldw, oldh);
+
+		createShader();
+	}
+
+	private void createShader() {
+		mDefaultAngularFrequency = 2.0f * Math.PI / DEFAULT_WAVE_LENGTH_RATIO / getWidth();
+		mDefaultAmplitude = getHeight() * DEFAULT_AMPLITUDE_RATIO;
+		mDefaultWaterLevel = getHeight() * DEFAULT_WATER_LEVEL_RATIO;
+		mDefaultWaveLength = getWidth();
+
+		Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(bitmap);
+
+		Paint wavePaint = new Paint();
+		wavePaint.setStrokeWidth(2);
+		wavePaint.setAntiAlias(true);
+
+		// Draw default waves into the bitmap
+		// y=Asin(ωx+φ)+h
+		final int endX = getWidth() + 1;
+		final int endY = getHeight() + 1;
+
+		float[] waveY = new float[endX];
+
+		wavePaint.setColor(mBehindWaveColor);
+		for (int beginX = 0; beginX < endX; beginX++) {
+			double wx = beginX * mDefaultAngularFrequency;
+			float beginY = (float) (mDefaultWaterLevel + mDefaultAmplitude * Math.sin(wx));
+			canvas.drawLine(beginX, beginY, beginX, endY, wavePaint);
+
+			waveY[beginX] = beginY;
+		}
+
+		wavePaint.setColor(mFrontWaveColor);
+		final int wave2Shift = (int) (mDefaultWaveLength / 4);
+		for (int beginX = 0; beginX < endX; beginX++) {
+			canvas.drawLine(beginX, waveY[(beginX + wave2Shift) % endX], beginX, endY, wavePaint);
+		}
+
+		// use the bitamp to create the shader
+		mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
+		mWavePaint.setShader(mWaveShader);
+	}
+
+	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
@@ -266,6 +348,7 @@ public class CustomWaterWaveView extends View {
 //			canvas.drawLine(startX, startY, startX, top, mWavePaint);
 //			startX++;
 //		}
+
 		canvas.drawCircle(mScreenWidth / 2, mScreenHeight / 2, mScreenWidth / 2
 				- mRingSTROKEWidth / 2, mRingPaint);
 

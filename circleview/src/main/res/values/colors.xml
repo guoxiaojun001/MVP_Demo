@@ -6,4 +6,9 @@
 
     <color name="circle_bg">#bddffc</color>
     <color name="main_bg">#2196f3</color>
+
+
+    <color name="red">#f16d7a</color>
+    <color name="green">#b7d28d</color>
+    <color name="blue">#b8f1ed</color>
 </resources>

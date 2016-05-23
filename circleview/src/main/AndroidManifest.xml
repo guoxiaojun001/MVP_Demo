@@ -31,6 +31,8 @@
 
         <activity android:name=".LoadImageToCircleActivity" />
 
+        <activity android:name=".WaveActivity" />
+
     </application>
 
 </manifest>

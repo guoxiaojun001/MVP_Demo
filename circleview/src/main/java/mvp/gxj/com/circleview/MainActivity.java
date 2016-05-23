@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements CircleView.MyListener{
     private int delay01;
     private int delay02;
 
-    private Button btn,go_third,go_other;
+    private Button btn,go_third,go_other , go_wave;
 
 
     @Override
@@ -54,6 +54,14 @@ public class MainActivity extends Activity implements CircleView.MyListener{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,LoadImageToCircleActivity.class));
+            }
+        });
+
+        go_wave = (Button) findViewById(R.id.go_wave);
+        go_wave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,WaveActivity.class));
             }
         });
 
